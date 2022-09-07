@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1661903327 source:c:\users\ra188897\desktop\aula 04\laboratório de programação i\cálculo média simples\main.c
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+
