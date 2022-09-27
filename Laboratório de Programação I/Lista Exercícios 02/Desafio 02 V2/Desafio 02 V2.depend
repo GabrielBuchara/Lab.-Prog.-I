@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1664300389 source:c:\users\user\desktop\coding\c\laboratório de programação i\lista exercícios 02\desafio 02 v2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
