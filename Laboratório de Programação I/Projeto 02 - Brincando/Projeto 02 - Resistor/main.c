@@ -53,15 +53,15 @@ int instrucoes(){
 }
 
 float valida_fx34(){
-    float fx3,fx4,fx3_val,fx4_val;
+    float fx3,fx4;
 //Condições para o fx3 (Dourado e Prata)
     if (fx3 == 10){
         fx3 = -1;
-        fx3_val = fx3;
+
     }
     else if (fx3 == 11){
         fx3 = -2 ;
-        fx3_val = fx3;
+
     }
 //Condições para o fx4 (Dourado, Prateado e Preto)
     if (fx4 == 10){
@@ -70,18 +70,16 @@ float valida_fx34(){
     }
     else if (fx4 == 11){
         fx4 = 10;
-        fx4_val = fx4;
+
 
     }
     else if (fx4 == 0){
         fx4 = 20;
-        fx4_val = fx4;
-    }
 
-    return fx3_val,fx4_val;
+    }
 }
 
-void calcVal(){
+int calcVal(){
     float fx1,fx2,fx3,fx4,calc,tolerancia,calcMenor,calcMaior;
 //Receber valores das faixas
 
@@ -100,14 +98,14 @@ void calcVal(){
     do {
         printf("Digite o código da terceira faixa multiplicadora de cor: ");
         scanf("%f", &fx3);
-    } while (fx3 != 0 && fx3 != 1 && fx3 != 2 && fx3 != 3 && fx3 != 4 && fx3 != 5 && fx1 != 10 && fx1 != 11);
+    } while (fx3 != 0 && fx3 != 1 && fx3 != 2 && fx3 != 3 && fx3 != 4 && fx3 != 5 && fx3 != 10 && fx3 != 11);
 
 //Condição para receber o valor da faixa 4
 
     do {
         printf("Digite o código da quarta faixa de cor (tolerância): ");
         scanf("%f", &fx4);
-    } while (fx4 != 0 && fx4 != 1 && fx4 != 2 && fx4 != 3 && fx4 != 4 && fx4 != 10 && fx4 != 11)
+    } while (fx4 != 0 && fx4 != 1 && fx4 != 2 && fx4 != 3 && fx4 != 4 && fx4 != 10 && fx4 != 11);
 
 
 //Cálculo da resistência
@@ -130,14 +128,11 @@ int main()
     //Declaração de variáveis
     float mostrar_instrucoes,calc_val;
     //Mostra as boas vindas ao programa. Além, das cores e seus respectivos valores
-    instrucoes();
+    mostrar_instrucoes = instrucoes();
     //
-    valida_fx34();
+    calc_val = calcVal();
     //
-    calcVal();
-    //
+
 
     return 0;
 }
-
-
