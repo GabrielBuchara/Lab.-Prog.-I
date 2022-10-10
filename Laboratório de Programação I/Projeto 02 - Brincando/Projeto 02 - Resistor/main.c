@@ -29,10 +29,17 @@ Data de lançamento da versão: 11/10/2022
 #include <locale.h> //biblioteca caracteres especiais
 #include <math.h>
 
-int instrucoes(){
+void instrucoes(){
     //Boas-vindas ao programa
-    printf("\nOlá, seja bem vindo/a ao programa de cálculo de resistência elétrica");
-    printf("\na partir do código de cores (4 faixas) para os resistores.");
+    printf("*******************************************************************************************");
+    printf("\nOlá, seja bem vindo(a) à calculadora de resistência elétrica para resistores de 4 faixas!");
+    printf("\n\nVocê deverá informar o valor de cada uma das faixas 4 faixas: faixa 1, faixa 2, faixa");
+    printf("\nmultiplicadora e a faixa de tolerância.\n");
+    printf("\nApós informar os valores corretamente, será realizado e mostrado o cálculo da resistência.");
+    printf("\nA unidade de medida utilizada será em Ohms.");
+    printf("\nOBS: Em caso de utilizar algum separador decimal, por favor, utilizado a VÍRGULA.");
+
+    printf("\n*******************************************************************************************\n");
     //Mostrar os valores das faixas
     printf ("\n\n------------- Valores das Cores ---------------\n");
     printf ("Preto:         0\t1\t+-20%%      \n");
@@ -49,40 +56,12 @@ int instrucoes(){
     printf ("Prateado:      11 \t10^-2\t+-10%%      \n");
     printf ("\n-----------------------------------------------\n");
 
-    return instrucoes;
+    return;
 }
 
-float valida_fx34(){
-    float fx3,fx4;
-//Condições para o fx3 (Dourado e Prata)
-    if (fx3 == 10){
-        fx3 = -1;
-
-    }
-    else if (fx3 == 11){
-        fx3 = -2 ;
-
-    }
-//Condições para o fx4 (Dourado, Prateado e Preto)
-    if (fx4 == 10){
-        fx4 = 5;
-
-    }
-    else if (fx4 == 11){
-        fx4 = 10;
-
-
-    }
-    else if (fx4 == 0){
-        fx4 = 20;
-
-    }
-}
-
-int calcVal(){
+float calcVal(){
     float fx1,fx2,fx3,fx4,calc,tolerancia,calcMenor,calcMaior;
 //Receber valores das faixas
-
 //Condição para receber o valor da faixa 1
     do {
         printf("\nDigite o código da primeira faixa de cor: ");
@@ -101,15 +80,32 @@ int calcVal(){
     } while (fx3 != 0 && fx3 != 1 && fx3 != 2 && fx3 != 3 && fx3 != 4 && fx3 != 5 && fx3 != 10 && fx3 != 11);
 
 //Condição para receber o valor da faixa 4
-
     do {
         printf("Digite o código da quarta faixa de cor (tolerância): ");
         scanf("%f", &fx4);
     } while (fx4 != 0 && fx4 != 1 && fx4 != 2 && fx4 != 3 && fx4 != 4 && fx4 != 10 && fx4 != 11);
 
+//Condições para o fx3 (Dourado e Prata)
+    if (fx3 == 10){
+        fx3 = -1;
+    }
+    else if (fx3 == 11){
+        fx3 = -2 ;
+    }
+//Condições para o fx4 (Dourado, Prateado e Preto)
+    if (fx4 == 10){
+        fx4 = 5;
+    }
+    else if (fx4 == 11){
+        fx4 = 10;
 
+    }
+    else if (fx4 == 0){
+        fx4 = 20;
+    }
 //Cálculo da resistência
     calc = ((fx1 * 10) + fx2) * (pow(10, fx3)); //função pow() serve como uma potência. Ex: pow(10,fx3) = 10^fx3.
+
 //Mostrar valores
     printf("\nO valor da resistência e da sua tolerância, respectivamente: %.2f ohms +/- %.2f%%. \n",calc,fx4);
 //Convertendo o valor para a realização do cálculo
@@ -118,6 +114,12 @@ int calcVal(){
     calcMaior = (calc + tolerancia);
 //Mostrando a taxa do valor da resistência
     printf("A sua tolerância será entre: %.2f e %.2f ohms. \n",calcMenor,calcMaior);
+
+    return 0;
+}
+
+void goodbye_world (void){
+    printf("\nObrigado por utilizar nosso software! A Equipe Espartana agradece! \n");
 
 }
 
@@ -128,10 +130,11 @@ int main()
     //Declaração de variáveis
     float mostrar_instrucoes,calc_val;
     //Mostra as boas vindas ao programa. Além, das cores e seus respectivos valores
-    mostrar_instrucoes = instrucoes();
-    //
+    instrucoes();
+    //Recebe os valores, calcula, valida e mostra seu resultado.
     calc_val = calcVal();
-    //
+    //Despedida do programa
+    goodbye_world();
 
 
     return 0;
