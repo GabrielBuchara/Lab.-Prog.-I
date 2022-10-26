@@ -77,8 +77,8 @@ int main() {
 	}
 	
 	//d) Soma de todos os elementos da matriz
+	somaT = 0;
 	for (i = 0; i < 3; i++){
-		somaT = 0;
 		for (j = 0; j < 4; j++){
 			somaT = somaT + matriz[i][j];
 		}
