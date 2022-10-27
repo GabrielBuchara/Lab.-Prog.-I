@@ -25,7 +25,6 @@ Data de lançamento da versão: 15/11/2022
 ==================================================================================
 */
 
-
 /*
 Elabore um programa para correção de provas objetivas.
 
@@ -58,7 +57,6 @@ nota = (número de acertos/número de questões)*10
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include <ctype.h>
 #include <locale.h> //biblioteca caracteres especiais
 
@@ -76,83 +74,53 @@ void instrucoes() {
 
     printf("\n*******************************************************************************************\n");
 }
+/*
+Referências:
+https://www.vivaolinux.com.br/topico/C-C++/programa-vetor-gabarito
+https://www.clubedohardware.com.br/forums/topic/1258043-programa-modularizado-para-corrigir-provas-de-m%C3%BAltipla-escolha/
 
-
+*/
 int main () {
     //Habilitando pt-BR
     setlocale (LC_ALL, "Portuguese");
     //Declaração de variáveis
-    int qtd_quest, i, qtd_alunos, ra[20], acertos, cont;
-    char gab[5], resp[5];
-    float *nota;
+    int i,j,qtd_alunos,qtd_quest,nota[qtd_alunos],ra[qtd_alunos],acert;
+    char gab[qtd_quest];
+    char resp [qtd_quest];
     //Introdução do programa
     instrucoes();
-    //Recebendo o valor das questões da prova
+    //Receber a quantidade de alunos
+    printf("Informe a quantidade de alunos: ");
+    scanf("%d",&qtd_alunos);
+    //Recebendo a quantidade de questões da prova
     printf("Informe a quantidade de questões da prova: ");
     scanf("%d",&qtd_quest);
     //Recebendo o valor do gabarito
     for (i = 0; i < qtd_quest; i++){
-        printf("Informe o gabarito da questão %d: \n",i+1);
-        gab[i] = tolower(getche());
-        printf("\n");
+        printf("Informe o gabarito da questão %d: ",i+1);
+        scanf(" %c",&gab[i]);
     }
-    //Receber a quantidade de alunos
-    printf("Informe a quantidade de alunos: ");
-    scanf("%d",&qtd_alunos);
-    //Receber o RA dos alunos
+    //Receber o RA dos alunos:
     for (i = 0; i < qtd_alunos; i++){
-        printf("Informe o RA do %dº aluno: ",i+1);
-        scanf("%d",&ra[i]);
-
-        for (i = 0; i < qtd_alunos; i++){
+        printf("Informe o RA do aluno %d: ",i+1);
+        scanf(" %d",&ra[i]);
     //Receber as respostas dos alunos
-            printf("Informe a resposta da %dº questão: ",i+1);
-            scanf("%c",&resp[i]);
-            cont = cont + 1;
-        }
-    }
-    //Validando as respostas dos alunos
-    for (i = 0; i < qtd_alunos; i++){
-        if (resp[i] == gab[i]){
-            acertos = acertos + 1;
-        }
-        else {
-            acertos = acertos + 0;
-        }
-    }
-    //Calculando a nota
-    nota[i] = ((acertos / qtd_quest)* 10);
-    //Mostrar o cálculo da nota
-    printf("RA%d: %.2f. \n",ra[i], nota[i]);
+        for (j = 0; j < qtd_quest; j++){
+            acert = 0;
+            printf("Informe a resposta da questão %d: \n",j+1);
+            scanf(" %c",&resp[j]);
 
+            if (resp[j] == gab[j]){
+                acert = acert + 1;
+            }
+        }
+    }
+    //Cálculo da nota
+    nota[i] = ((acert / qtd_quest) * 10);
+    //Mostrando os valores
+    for (j = 0; j < qtd_alunos; j++){
+        printf("RA%d: %d. \n",ra[j],nota[j]);
+    }
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
