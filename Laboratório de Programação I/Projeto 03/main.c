@@ -78,81 +78,43 @@ void instrucoes() {
 }
 
 
-int main () {
-    //Habilitando pt-BR
-    setlocale (LC_ALL, "Portuguese");
-    //Declaração de variáveis
-    int qtd_quest, i, qtd_alunos, ra[20], acertos, cont;
-    char gab[5], resp[5];
-    float *nota;
-    //Introdução do programa
+#include <stdio.h>
+
+int main() {
+    //
+    setlocale(LC_ALL, "Portuguese");
+    //
+    int n, i, q, aluno, ra[20], pontos;
+    char gabarito[20], resp[20]; 
+    float nota; 
+
+    //Função para explicar sobre o programa
     instrucoes();
-    //Recebendo o valor das questões da prova
-    printf("Informe a quantidade de questões da prova: ");
-    scanf("%d",&qtd_quest);
-    //Recebendo o valor do gabarito
-    for (i = 0; i < qtd_quest; i++){
-        printf("Informe o gabarito da questão %d: \n",i+1);
-        gab[i] = tolower(getche());
-        printf("\n");
-    }
-    //Receber a quantidade de alunos
-    printf("Informe a quantidade de alunos: ");
-    scanf("%d",&qtd_alunos);
-    //Receber o RA dos alunos
-    for (i = 0; i < qtd_alunos; i++){
-        printf("Informe o RA do %dº aluno: ",i+1);
-        scanf("%d",&ra[i]);
-
-        for (i = 0; i < qtd_alunos; i++){
-    //Receber as respostas dos alunos
-            printf("Informe a resposta da %dº questão: ",i+1);
-            scanf("%c",&resp[i]);
-            cont = cont + 1;
+    //Receber o valor do número de alunos da sala
+    printf("Digite o numero de alunos: ");
+    scanf("%d", &n);
+    //Receber o valor do número de questões da prova
+    printf("Informe o número de questões da prova: ");
+    scanf("%d",&q);
+    //Receber o gabarito da prova
+    printf("Digite o gabarito da prova: ");
+    for (i = 0; i < q; i++) 
+        scanf(" %c", &gabarito[i]);  
+    //
+    for (aluno = 1; aluno <= n; aluno++) {
+        pontos = 0;
+        printf("Informe o RA do aluno %d: \n",aluno);
+        scanf("%d",&ra[aluno]);
+        printf("Digite as respostas do RA%d: ", ra[aluno]);
+        for (i = 0; i < q; i++) {
+            scanf(" %c", &resp[i]);
+            if (resp[i] == gabarito[i]) {
+                pontos = pontos + 1;
+            }   
         }
+            float nota = (((float)pontos/(float)q)*10);
+        printf("O aluno %d (RA%d) acertou %d questões.\nSua nota foi de: %.2f.\n\n", aluno, ra[aluno], pontos, nota);
     }
-    //Validando as respostas dos alunos
-    for (i = 0; i < qtd_alunos; i++){
-        if (resp[i] == gab[i]){
-            acertos = acertos + 1;
-        }
-        else {
-            acertos = acertos + 0;
-        }
-    }
-    //Calculando a nota
-    nota[i] = ((acertos / qtd_quest)* 10);
-    //Mostrar o cálculo da nota
-    printf("RA%d: %.2f. \n",ra[i], nota[i]);
 
-
-    return 0;
+  return 0; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
