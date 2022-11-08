@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1665099414 source:c:\users\ra188897\desktop\tentando otimizar\projeto 02 - resistor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
