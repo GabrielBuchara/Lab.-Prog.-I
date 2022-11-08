@@ -1,5 +1,0 @@
-Referência:
-
-https://www.ime.usp.br/~macmulti/exercicios/vetores/2C.html
-
-*O erro que dá no programa é ao mudar um número definido de um vetor para uma variável que irá alocar a quantidade de questões.
